@@ -18,8 +18,8 @@ try {
 }
 token = token.trim();
 
-const testChannel = 'C04A2C19U31';
-const testUserId = 'U047AEG245C';
+const testChannel = 'C04F1QFRDLZ';
+const testUserId = 'U04BHCPSB38';
 
 const rtm = new RTMClient(token);
 rtm.start();
@@ -61,13 +61,17 @@ rtm.on('message', async (message) => {
         if (todayDay === 0 || todayDay === 6) { // 주말 안내
           if (text === '토요일과 일요일은 진수원 휴무입니다.') {
             console.log('[주말 예외 처리 성공]');
+            status = 10;
+            await rtm.sendMessage('5', testChannel);
           } else {
             console.log('[주말 예외 처리 실패]');
+            status = 10;
+            await rtm.sendMessage('5', testChannel);
           }
         } else { // 평일 안내
           console.log('[평일 점심 안내 완료]');
+          status += 1;
         }
-        status += 1;
         break;
 
       case 4: // 오늘 점심 평가 테스트
