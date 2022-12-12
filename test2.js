@@ -182,8 +182,8 @@ rtm.on('message', async (message) => {
         process.exit(1);
     }
   } else {
-    rtm.sendMessage('테스트 중입니다. 나가십시오 휴먼', testChannel);
-    console.log('테스트가 방해받았습니다. 테스트를 종료합니다.');
+    await rtm.sendMessage('테스트 중입니다. 나가십시오 휴먼', testChannel);
+    await console.log('테스트가 방해받았습니다. 테스트를 종료합니다.');
     process.exit(1);
   }
 });
